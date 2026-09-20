@@ -1,0 +1,116 @@
+<div class="lineup-dashboard">
+
+  <div class="header">
+    <h1>Lineup Summary</h1>
+    <p>Top 10 lineups ranked by net rating, with at least 10 offensive and defensive possessions.</p>
+  </div>
+
+  <div class="controls">
+    <label for="lineupSize">Lineup Size:</label>
+
+    <select
+      id="lineupSize"
+      [(ngModel)]="lineupSize"
+      (change)="loadLineups()"
+    >
+      <option [value]="1">1 Player</option>
+      <option [value]="2">2 Players</option>
+      <option [value]="3">3 Players</option>
+      <option [value]="4">4 Players</option>
+      <option [value]="5">5 Players</option>
+    </select>
+  </div>
+
+  <div class="lineup-grid">
+
+    <div class="lineup-card" *ngFor="let lineup of lineups">
+
+      <div class="lineup-header">
+        <h2>#{{ lineups.indexOf(lineup) + 1 }} Lineup</h2>
+        <span class="possessions">
+          {{ lineup.total_possessions }} possessions
+        </span>
+      </div>
+
+      <div class="players">
+        <div class="player" *ngFor="let player of lineup.players">
+          {{ player.name }}
+        </div>
+      </div>
+
+      <div class="main-stat">
+        <span>Net Rating</span>
+        <div class="main-stat">
+          <span>Net Rating</span>
+          <strong [class.positive]="lineup.net_rating > 0"
+                  [class.negative]="lineup.net_rating < 0">
+            {{ lineup.net_rating > 0 ? '+' : '' }}{{ lineup.net_rating | number:'1.1-1' }}
+          </strong>
+        </div>
+      </div>
+
+      <div class="stats">
+
+        <div class="stat">
+          <span>Offensive Rating</span>
+          <strong>
+            {{ lineup.offensive_rating | number:'1.1-1' }}
+          </strong>
+        </div>
+
+        <div class="stat">
+          <span>Defensive Rating</span>
+          <strong>
+            {{ lineup.defensive_rating | number:'1.1-1' }}
+          </strong>
+        </div>
+
+        <div class="stat">
+          <span>Offensive Possessions</span>
+          <strong>
+            {{ lineup.offensive_possessions }}
+          </strong>
+        </div>
+
+        <div class="stat">
+          <span>Defensive Possessions</span>
+          <strong>
+            {{ lineup.defensive_possessions }}
+          </strong>
+        </div>
+
+        <div class="stat">
+          <span>FG%</span>
+          <strong>
+            {{ lineup.offensive_fg_pct * 100 | number:'1.1-1' }}%
+          </strong>
+        </div>
+
+        <div class="stat">
+          <span>3P%</span>
+          <strong>
+            {{ lineup.offensive_fg3_pct * 100 | number:'1.1-1' }}%
+          </strong>
+        </div>
+
+        <div class="stat">
+          <span>Defensive Rebound Rate</span>
+          <strong>
+            {{ lineup.defensive_rebound_rate * 100 | number:'1.1-1' }}%
+          </strong>
+        </div>
+
+        <div class="stat">
+          <span>Points</span>
+          <strong>
+            {{ lineup.offensive_points }}
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
