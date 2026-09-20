@@ -1,7 +1,7 @@
 # Submission Information
 
-Applicant Name:
+Applicant Name: Ted Wangchuk
 
-Applicant Email Address:
+Applicant Email Address: tedwangchuk08@gmail.com
 
-Deployed Project URL:
+Deployed Project URL: 
