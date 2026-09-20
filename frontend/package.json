@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "deploy": "node server.js"
+    "deploy": "npm run build && node server.js"
   },
   "private": true,
   "engines": {
